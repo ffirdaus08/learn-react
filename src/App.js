@@ -1,11 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Person from './person/person'
 
 function App() {
   return (
     <div className="App">
-      <div>REACTTTTTT</div>
+      <div>LEARN REACT</div>
+      <Person name="fahmi" age="17"/>
+      <Person name="fahmi f" age="12"/>
+      <Person name="fahmi ff" age="15"/>
+      <Person name="fahmi fff" age="15"/>
     </div>
   );
 }
