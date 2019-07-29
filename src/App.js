@@ -2,16 +2,25 @@ import React from 'react';
 import './App.css';
 import Person from './person/person'
 
-function App() {
+class App extends React.Component {
+  state = {
+    person: [
+      {name: 'max', age: 28},
+      {name: 'min', age: 29},
+      {name: 'average', age: 30}
+    ]
+  }
+  render(){
   return (
     <div className="App">
       <div>LEARN REACT</div>
-      <Person name="fahmi" age="17"/>
-      <Person name="fahmi f" age="12"/>
-      <Person name="fahmi ff" age="15">My Hobbies : Racing</Person>
-      <Person name="fahmi fff" age="15"/>
+      <button>Switch Name</button>
+      <Person name={this.state.person[0].name} age={this.state.person[0].age}/>
+      <Person name={this.state.person[1].name} age={this.state.person[1].age}/>
+      <Person name={this.state.person[2].name} age={this.state.person[2].age}/>
     </div>
   );
+}
 }
 
 export default App;
