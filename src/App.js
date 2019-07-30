@@ -8,10 +8,18 @@ class App extends React.Component {
       {name: 'max', age: 28},
       {name: 'min', age: 29},
       {name: 'average', age: 30}
-    ]
+    ],
+    otherState : 'other some value'
   }
   switchNameHandler = () => {
-    console.log('was clicked')
+    // console.log('was clicked')
+    this.setState({
+      person: [
+        {name: 'fahmi', age: 17},
+        {name: 'firdaus', age: 27},
+        {name: 'maxi', age: 37}
+      ]
+    })
   }
   render(){
   return (
