@@ -1,4 +1,4 @@
-import React ,{ useState, setState, Component }from 'react';
+import React ,{ Component }from 'react';
 import './App.css';
 import Person from './person/person'
 
@@ -26,35 +26,43 @@ export default class App extends Component {
     })
   }
 
+    NameChangeHandler =(event) => {
+    this.setPersonState({
+      person: [
+        {name: 'fahmi', age: 17},
+        {name: event.target.value, age: 27},
+        {name: 'maxi', age: 37}
+      ]
+    })
+  }
+
      togglePersonHandler = () => {
     const doesShow = this.state.showPerson;
     this.setState({showPerson: !doesShow})
   }
 
   render() {
+
+    let persons = null;
+
+    if (this.state.showPerson) {
+      persons = (
+        <div>
+          {this.state.person.map(persons =>{
+            return <Person
+            name={persons.name}
+            age={persons.age} />
+          })}
+        </div>
+      )
+    }
+    
     return (
          <div className="App">
       <div>LEARN REACT</div>
       <button 
-      onClick={this.togglePersonHandler}>Switch Name</button>
-      {
-        this.state.showPerson === true ?
-      <div>
-        <Person 
-          name={this.state.person[0].name} 
-          age={this.state.person[0].age}/>
-        <Person 
-          name={this.state.person[1].name} 
-          age={this.state.person[1].age}
-          click={this.switchNameHandler.bind(this, 'max!!!!')}
-          changed={this.NameChangeHandler}>
-        my hobies : racing</Person>
-        <Person 
-          name={this.state.person[2].name} 
-          age={this.state.person[2].age}/>
-      </div> : null
-      }
-      
+      onClick={this.togglePersonHandler}>Toggle Button</button>
+      {persons}
     </div>
     )
   }
