@@ -1,6 +1,6 @@
 // untuk penggunaan component class pake this
 import React, { Component } from 'react'
-
+import Radium from 'radium';
 import './person.css'
 
 export default class person extends Component {
@@ -14,6 +14,8 @@ export default class person extends Component {
         )
     }
 }
+
+person = Radium(person)
 
 
 

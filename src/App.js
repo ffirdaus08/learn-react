@@ -1,5 +1,6 @@
 import React ,{ Component }from 'react';
 import './App.css';
+import Radium from 'radium';
 import Person from './person/person'
 
 
@@ -15,16 +16,6 @@ export default class App extends Component {
       showPerson: false
   }
 
-  //   switchNameHandler = (newName) => {
-  //   // console.log('was clicked')
-  //   this.setState({
-  //     person: [
-  //       {name: newName, age: 17},
-  //       {name: 'firdaus', age: 27},
-  //       {name: 'maxi', age: 37}
-  //     ]
-  //   })
-  // }
 
     NameChangeHandler =(event , id) => {
       const personIndex = this.state.person.findIndex(p => {
@@ -59,6 +50,18 @@ export default class App extends Component {
 
     let persons = null;
 
+    const style = {
+      backgroundColor: 'green',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding:'8px',
+      cursor: 'pointer',
+      ':hover':{
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
+    }
+
     if (this.state.showPerson) {
       persons = (
         <div>
@@ -73,12 +76,26 @@ export default class App extends Component {
           })}
         </div>
       )
+      style.backgroundColor = 'red';
+      style[':hover']={
+        backgroundColor: 'salmon',
+        color: 'black'
+      };
+    }
+
+    const classes = [];
+    if (this.state.person.length <= 2){
+      classes.push('red');
+    }
+    if (this.state.person.length <= 1){
+      classes.push('bold');
     }
     
     return (
          <div className="App">
       <div>LEARN REACT</div>
-      <button 
+      <p className={classes.join(' ')}>this is really working</p>
+      <button style={style}
       onClick={this.togglePersonHandler}>Toggle Button</button>
       {persons}
     </div>
@@ -86,77 +103,5 @@ export default class App extends Component {
   }
 }
 
+App  = Radium(App)
 
-// const App = props => {
-//   const [personState, setPersonState,] = useState ({
-    // person: [
-    //   {name: 'max', age: 28},
-    //   {name: 'min', age: 29},
-    //   {name: 'average', age: 30}
-    // ],
-    //   showPerson: false
-//   });
-  
-//   const state ={
-//     showPerson: false
-//   }
-
-//   const [otherState, setOtherState] = useState('some other value')
-
-//   console.log(personState, otherState);
-
-//   const switchNameHandler = (newName) => {
-//     // console.log('was clicked')
-//     setPersonState({
-//       person: [
-//         {name: newName, age: 17},
-//         {name: 'firdaus', age: 27},
-//         {name: 'maxi', age: 37}
-//       ]
-//     })
-//   }
-
-//   const NameChangeHandler =(event) => {
-//     setPersonState({
-//       person: [
-//         {name: 'fahmi', age: 17},
-//         {name: event.target.value, age: 27},
-//         {name: 'maxi', age: 37}
-//       ]
-//     })
-//   }
-
-//   const togglePersonHandler = () => {
-//     const doesShow = state.showPerson;
-//     setState({showPerson: !doesShow})
-//   }
-  
-//   return (
-//     <div className="App">
-//       <div>LEARN REACT</div>
-//       <button 
-//       onClick={togglePersonHandler}>Switch Name</button>
-//       {
-//         state.showPerson === true ?
-//       <div>
-//         <Person 
-//           name={personState.person[0].name} 
-//           age={personState.person[0].age}/>
-//         <Person 
-//           name={personState.person[1].name} 
-//           age={personState.person[1].age}
-//           click={switchNameHandler.bind(this, 'max!!!!')}
-//           changed={NameChangeHandler}>
-//         my hobies : racing</Person>
-//         <Person 
-//           name={personState.person[2].name} 
-//           age={personState.person[2].age}/>
-//       </div> : null
-//       }
-      
-//     </div>
-//   );
-// }
-
-
-// export default App;
