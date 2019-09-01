@@ -1,6 +1,6 @@
 import React ,{ Component }from 'react';
 import './App.css';
-import Radium from 'radium';
+import Radium, { StyleRoot }from 'radium';
 import Person from './person/person'
 
 
@@ -92,13 +92,15 @@ export default class App extends Component {
     }
     
     return (
-         <div className="App">
-      <div>LEARN REACT</div>
-      <p className={classes.join(' ')}>this is really working</p>
-      <button style={style}
-      onClick={this.togglePersonHandler}>Toggle Button</button>
-      {persons}
-    </div>
+      <StyleRoot>
+      <div className="App">
+        <div>LEARN REACT</div>
+          <p className={classes.join(' ')}>this is really working</p>
+            <button style={style}
+              onClick={this.togglePersonHandler}>Toggle Button</button>
+            {persons}
+      </div>
+      </StyleRoot>
     )
   }
 }
