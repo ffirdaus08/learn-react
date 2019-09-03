@@ -1,17 +1,13 @@
 // untuk penggunaan component class pake this
 import React, { Component } from 'react'
-import Radium from 'radium';
+
 import './person.css'
 
 export default class person extends Component {
     render() {
-        const style = {
-            '@media (min-width: 500px)': {
-                width: '450px'
-            }
-        }
+       
         return (
-            <div className="Person" style={style}>
+            <div className="Person">
                <p onClick={this.props.click}>i am {this.props.name} and i am {this.props.age} years old!</p>
                <p>{this.props.children}</p>
                <input type="text" onChange={this.props.changed} value={this.props.name}></input>
@@ -20,7 +16,7 @@ export default class person extends Component {
     }
 }
 
-person = Radium(person)
+
 
 
 
