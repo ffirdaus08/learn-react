@@ -1,5 +1,6 @@
 import React ,{ Component }from 'react';
 import './App.css';
+import styless from './styless.module.css'
 import Person from './person/person'
 
 
@@ -85,7 +86,7 @@ export default class App extends Component {
     }
     
     return (
-      <div className="App">
+      <div className={styless.App}>
         <div>LEARN REACT</div>
           <p className={classes.join(' ')}>this is really working</p>
             <button style={style}
